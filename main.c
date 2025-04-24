@@ -1,19 +1,30 @@
 #include <stdio.h>
+//function declaration
+void add_students(char names[5][11], int scores[5][13]);
+void print_students(char names[5][11], int scores[5][13]);
 
+int main(){
+    char names[5][11];
+    int scores[5][13];
 
-// adding names
-void add_names(){
-    printf("Add name & score: ");
-    char name[10];
-    int score[12];
+    add_students(names, scores);
+    print_students(names, scores);
 
-    scanf("%s", name);
+    return 0;
+}
 
-    for(int i = 0; i <=13; i++){
-        score[i] = scanf("%d");
+//Read 5 lines of names and test scores
+void add_students(char names[5][11], int scores[5][13]){
+
+    for (int i = 0; i < 5; i++){
+
+        scanf("%s", names[i]);
+
+        for( int j = 0; j < 13; j++)
+        {
+            scanf("%d", &scores[i][j]);
+        }
     }
-    printf("%s added\nScore: %d %d %d %d %d %d %d %d %d %d %d %d %d", name, score[0], score[1], score[2], score[3], score[4], score[5], score[6], score[7], score[8], score[9], score[10], score[11], score[12]);
-
 }
 
 //calculate average
@@ -39,10 +50,15 @@ float compare_average(float a, float b){
 //change to capital first letter
 
 // print data
-
-int main(){
-    add_names();
-
-
-    return 0;
+void print_students(char names[5][11], int scores[5][13]){
+    printf("\nCollected data\n");
+    for (int i = 0; i < 5; i++){
+        printf("Name: %s\nScores: ", names[i]);
+        for (int j = 0; j < 13; j++){
+            printf("%d ", scores[i][j]);
+        }
+        printf("\n");
+    }
 }
+
+
